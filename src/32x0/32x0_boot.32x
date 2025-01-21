@@ -1,0 +1,42 @@
+;; 32x0 Runtime zero routine
+;; org: 0x1000 (very different from the 64x0)
+;; interrupts: 0x800 (much like the 64x0)
+;; brief: jump to main
+
+;; Copyright 2024, Amlal EL Mahrouss, all rights reserved.
+
+%def ROMBOOT_BASE $1000
+
+org ROMBOOT_BASE
+
+move.w r0, __vector_interrupts_table
+move.w r1, __vector_interrupts_table_length
+move.w r2, 0
+
+__vector_L1:
+    move.b [r0+r2], [$800+r2]
+    incr r2
+    cmp r2, r1
+    je __vector_done
+    jmp __vector_L1
+
+__vector_done:
+    ;; forth interpreter and setup it's stack.
+    move.w sp, $7c00
+    jmp $8000
+
+    mh
+
+__vector_interrupts_table:
+    dw 0
+    dw 0
+    dw 0
+    dw 0
+    dw 0
+    dw 0
+    dw 0
+    dw 0
+    dw 0
+
+__vector_interrupts_table_length:
+    dw 9

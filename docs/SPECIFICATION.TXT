@@ -1,0 +1,31 @@
+=================================
+
+        Multi Platform IPL
+
+=================================
+
+What we want:
+
+- Optimized for each target.
+- Common Hardware Support compilant.
+- AMD64, PowerPC, RISC-V, 64x0, 32x0 support.
+- SMP support.
+
+How we're going to do that:
+
+- Abstract Memory and I/O. (pci-tree)
+- Platform Independent Device Tree. (pci-tree)
+- Common Starting point for each core (smp)
+
+Executable Layout:
+
+- 0x80000000/0x00FF/0x1000: Firmware Startup Code
+- 0x90000000/0x7c00: Executable Information Header or equivalent.
+
+Error Codes:
+
+- LX0001: Not bootable
+- LX0002: Bad arch
+- LX0003: Bad revision
+
+

@@ -1,0 +1,11 @@
+[
+  {
+    "Machine": "Standard PC",
+    "Type": "Desktop",
+    "Vendor": "Amlal EL Mahrouss.",
+    "FrameBuffer": "0x1000000",
+    "BootLoader": "0x4000000",
+    "PCITree": "0x8002000",
+    "ROM": "0xFFFF000"
+  }
+]

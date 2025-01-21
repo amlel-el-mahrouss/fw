@@ -1,0 +1,13 @@
+# 64x0 Runtime zero routine
+# org: 1M
+# interrupts: 1M - 2048
+# brief: jump to r16 which contains the code to jump on.
+
+# Copyright 2024, Amlal EL Mahrouss, all rights reserved.
+
+export .text __start
+    lda r15, 0x7c00
+    lda r16, 0x8000
+    mv r5, r15
+    mv r19, r16
+    jrl
