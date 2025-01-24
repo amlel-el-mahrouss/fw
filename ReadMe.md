@@ -1,4 +1,4 @@
-# MediaSwirl IPL
+# CoreBoot IPL
 ## Multi-Platform IPL.
 
 Made for 64x0, RISC-V, AMD64 and POWER architectures.
