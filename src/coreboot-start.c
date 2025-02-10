@@ -46,28 +46,28 @@ void mp_start_exec(void)
 	// let the hart 0 init our stuff.
 	if (hart == 1)
 	{
-		mp_put_string("TQ> Welcome to CoreBoot, (c) Amlal EL Mahrouss. Built the ");
+		mp_put_string("CB> Welcome to CoreBoot, (c) Amlal EL Mahrouss. Built the ");
 		mp_put_string(__DATE__);
 		mp_put_string("\r\r\n");
 
 #ifdef __COMPILE_POWERPC__
-		mp_put_string("TQ> CPU: PowerPC 64-bit Based SoC.\r\r\n");
+		mp_put_string("CB> CPU: PowerPC 64-bit Based SoC.\r\r\n");
 #endif // __COMPILE_POWERPC__
 
 #ifdef __COMPILE_AMD64__
-		mp_put_string("TQ> CPU: x64 Based SoC.\r\r\n");
+		mp_put_string("CB> CPU: x64 Based SoC.\r\r\n");
 #endif // __COMPILE_AMD64__
 
 #ifdef __COMPILE_ARM64__
-		mp_put_string("TQ> CPU: AArch64 Based SoC.\r\r\n");
+		mp_put_string("CB> CPU: AArch64 Based SoC.\r\r\n");
 #endif // __COMPILE_ARM64__
 
 #ifdef __COMPILE_ARM32__
-		mp_put_string("TQ> CPU: AArch32 Based SoC.\r\r\n");
+		mp_put_string("CB> CPU: AArch32 Based SoC.\r\r\n");
 #endif // __COMPILE_ARM64__
 
 #ifdef __COMPILE_RISCV__
-		mp_put_string("TQ> CPU: RV64 Based SoC.\r\r\n");
+		mp_put_string("CB> CPU: RV64 Based SoC.\r\r\n");
 #endif // __COMPILE_RISCV__
 	}
 
@@ -89,19 +89,19 @@ void mp_start_exec(void)
 		{
 			if (hart == 1)
 			{
-				mp_put_string("TQ> Can't Boot the Stage2, invalid signature. (CB0003)\r\n");
+				mp_put_string("CB> Can't Boot the Stage2, invalid signature. (CB0003)\r\n");
 			}
 		}
 		else
 		{
 			if (hart == 1)
 			{
-				mp_put_string("TQ> Executing Stage2: ");
+				mp_put_string("CB> Executing Stage2: ");
 				mp_put_string((const char*)boot_hdr->h_name);
 				mp_put_char('\r');
 				mp_put_char('\n');
 
-				// printf("TQ> address: %x\n", boot_hdr->h_start_address);
+				// printf("CB> address: %x\n", boot_hdr->h_start_address);
 			}
 
 			if (boot_hdr->h_start_address != 0)
@@ -110,14 +110,14 @@ void mp_start_exec(void)
 				mp_start_context(boot_hdr->h_start_address);
 			}
 
-			mp_put_string("TQ> Stage2 has returned? (CB0002)\r\n");
+			mp_put_string("CB> Stage2 has returned? (CB0002)\r\n");
 		}
 	}
 	else
 	{
 		if (hart == 1)
 		{
-			mp_put_string("TQ> Can't boot to Stage2. (CB0001)\r\n");
+			mp_put_string("CB> Can't boot to Stage2. (CB0001)\r\n");
 		}
 	}
 

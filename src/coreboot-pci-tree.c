@@ -21,7 +21,7 @@
 /// BUGS: 0
 
 /// Standard Root table (Mahrouss Table)
-#define SYS_PCI_ROOT_NAME "/elmh/@/"
+#define SYS_PCI_ROOT_NAME "/swirl/@/"
 
 static struct hw_mp_pci_tree* mp_base_tree	 = nil;
 static struct hw_mp_pci_tree* mp_latest_tree = nil;

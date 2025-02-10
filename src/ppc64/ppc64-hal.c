@@ -89,6 +89,8 @@ void mp_init_hw(void)
 	mp_pci_append_tree("@mbci", 0x0, 0x0);
 	mp_pci_append_tree("@serial", SYS_UART_BASE, 0);
 	mp_pci_append_tree("@pci", SYS_BASE_ADDRESS, 0x0);
+
+	mp_flush_tlb();
 }
 
 void mp_flush_tlb(void)
