@@ -1,6 +1,20 @@
-# CoreBoot IPL
-## Multi-Platform IPL.
+# NeKernel Firmware
 
-Made for 64x0, RISC-V, AMD64 and POWER architectures.
+## Requirements:
 
-###### Copyright 2024, Amlal EL Mahrouss. all rights reserved.
+- [CLang](https://clang.llvm.org/)
+- [NASM](https://nasm.us/)
+- [Git](https://git-scm.com/)
+- GNU Make
+
+## Cloning:
+
+```sh
+  git clone git@github.com:amlel-el-mahrouss/fw.git
+```
+
+## Building:
+
+
+
+###### Copyright 2024-2025, Amlal EL Mahrouss. all rights reserved.
