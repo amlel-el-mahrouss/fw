@@ -12,7 +12,7 @@
 #define MP_FILESYSTEM_COUNT 3
 #define MP_FILESYSTEM_LIST     \
 	{                          \
-		"NeFS", "HPFS", "HFS+" \
+		"NeFS", "HeFS", "HFS+" \
 	}
 
 /// @brief check if filesystem is supported by CoreBoot.
