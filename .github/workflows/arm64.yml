@@ -1,0 +1,19 @@
+name: FW CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install Packages
+      run: sudo apt update && sudo apt install gcc-arm-none-eabi
+    - name: Build FW (ARM64)
+      run: cd src && make all
