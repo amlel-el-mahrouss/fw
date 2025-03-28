@@ -8,13 +8,13 @@
 
 #include <lib/boot.h>
 
-#define NETBOOT_INET_MAGIC	   "NETB"
-#define NETBOOT_INET_MAGIC_LEN 4
+#define BOOTNET_INET_MAGIC	   "NETB"
+#define BOOTNET_INET_MAGIC_LEN 4
 
 /// @brief Netboot Internet Header
 /// Consists of 4 magic characters, and a set of fields describing the current patch that's being sent (if m_preflight = 0)
 /// @note Can be used to patch ROMs too (if m_implies_rom = 1)
-typedef struct NETBOOT_INET_HEADER
+typedef struct bootnet_inet_header
 {
 	char m_nb1; /// magic char 1 'N'
 	char m_nb2; /// magic char 2 'E'
@@ -27,4 +27,4 @@ typedef struct NETBOOT_INET_HEADER
 	uint8_t m_implies_rom;	   /// does it imply an EEPROM program?
 	uint8_t m_preflight;	   /// Do we just check if this endpoint exists/is valid?
 	uint8_t m_blob[];
-} NETBOOT_INET_HEADER;
+} bootnet_inet_header;

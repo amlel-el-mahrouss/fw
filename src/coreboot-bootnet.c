@@ -4,4 +4,4 @@
 
 ------------------------------------------- */
 
-#include <lib/netboot.h>
+#include <lib/bootnet.h>
