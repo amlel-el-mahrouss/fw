@@ -8,26 +8,26 @@
 
 /// BUGS: 0
 
-extern "C" __SIZE_TYPE__ mp_put_string(const char* text);
-extern "C" void			 mp_panic(const char* reason);
+extern "C" __SIZE_TYPE__ cb_put_string(const char* text);
+extern "C" void			 cb_panic(const char* reason);
 
 extern "C" void __stack_chk_fail()
 {
-	mp_put_string("[stack-canary] Buffer overflow detected, halting...\n");
-	mp_panic("stack_canary_fail");
+	cb_put_string("[stack-canary] Buffer overflow detected, halting...\n");
+	cb_panic("stack_canary_fail");
 }
 
 void* __dso_handle;
 
-extern "C" __SIZE_TYPE__ mp_put_string(const char* text);
-extern "C" void			 mp_panic(const char* reason);
+extern "C" __SIZE_TYPE__ cb_put_string(const char* text);
+extern "C" void			 cb_panic(const char* reason);
 
 atexit_func_entry_t __atexit_funcs[DSO_MAX_OBJECTS];
 uarch_t				__atexit_func_count;
 
 extern "C" void __cxa_pure_virtual()
 {
-	mp_put_string("[__cxa_pure_virtual] Placeholder\n");
+	cb_put_string("[__cxa_pure_virtual] Placeholder\n");
 }
 
 extern "C" int __cxa_atexit(void (*f)(void*), void* arg, void* dso)

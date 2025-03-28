@@ -6,7 +6,7 @@
 
 /**
  * @file coreboot-string.c
- * @author Amlal EL Mahrouss (amlal@el-mahrouss-logic.com)
+ * @author Amlal EL Mahrouss (amlal@nekernel.org)
  * @brief string library.
  * @version 0.1
  * @date 2024-01-16

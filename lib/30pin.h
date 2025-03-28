@@ -10,8 +10,8 @@
 
 struct TRB_PACKET
 {
-    char mag[2];
-    char kind;
-    char buffer[498];
-    char eop[11];
+	char mag[2];
+	char kind;
+	char buffer[498];
+	char eop[11];
 };

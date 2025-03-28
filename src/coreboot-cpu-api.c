@@ -8,7 +8,7 @@
 
 /// @brief Restarts the computer.
 /// @param none.
-void mp_restart_machine(void)
+void cb_restart_machine(void)
 {
 #ifdef __COMPILE_RISCV__
 	volatile uint32_t* brd_pwr = (volatile uint32_t*)0x100000;

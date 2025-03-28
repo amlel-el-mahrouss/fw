@@ -93,11 +93,11 @@ enum
 };
 
 /// @brief check for supported filesystem.
-boolean mp_filesystem_exists(caddr_t fs, size_t len);
+boolean cb_filesystem_exists(caddr_t fs, size_t len);
 
 /// @brief Parse EPM block from blob.
-bool mp_parse_partition_block_data_at(voidptr_t blob, size_t blob_sz, size_t index, size_t* end_lba, size_t* start_lba, size_t* sector_sz);
+bool cb_parse_partition_block_data_at(voidptr_t blob, size_t blob_sz, size_t index, size_t* end_lba, size_t* start_lba, size_t* sector_sz);
 
-part_block_t* mp_parse_partition_block_at(voidptr_t blob, size_t blob_sz, size_t index);
+part_block_t* cb_parse_partition_block_at(voidptr_t blob, size_t blob_sz, size_t index);
 
 #endif // ifndef __PARTITION_MAP_H__

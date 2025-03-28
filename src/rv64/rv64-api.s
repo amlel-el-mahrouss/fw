@@ -8,9 +8,9 @@
 # ====================================
 
 .balign 4
-.global mp_flush_tlb
+.global cb_flush_tlb
 
-mp_flush_tlb:
+cb_flush_tlb:
     sfence.vma
 
     ret

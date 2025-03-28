@@ -9,15 +9,15 @@
 
 // include this for documentation.
 
-#define MP_FILESYSTEM_COUNT 3
-#define MP_FILESYSTEM_LIST     \
-	{                          \
-		"NeFS", "HeFS", "HFS+" \
+#define MP_FILESYSTEM_COUNT 4
+#define MP_FILESYSTEM_LIST              \
+	{                                   \
+		"NeFS", "HeFS", "FAT32", "ext4" \
 	}
 
 /// @brief check if filesystem is supported by CoreBoot.
 /// @param fs the filesystem magic, as provided by EPM.
-boolean mp_filesystem_exists(caddr_t fs, size_t len)
+boolean cb_filesystem_exists(caddr_t fs, size_t len)
 {
 	if (fs == nil ||
 		*fs == 0)

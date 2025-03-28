@@ -29,42 +29,42 @@
 #define SYS_PCI_VERSION (0x0100)
 
 #define SYS_PCI_DEV_MAGIC (0xfeedd00d)
-#define SYS_PCI_INT_SZ	  sizeof(mp_pci_num_t)
+#define SYS_PCI_INT_SZ	  sizeof(cb_pci_num_t)
 
 #define SYS_PCI_NAME_LEN (255U)
 
-typedef char	  mp_pci_char_t;
-typedef uintptr_t mp_pci_num_t;
+typedef char	  cb_pci_char_t;
+typedef uintptr_t cb_pci_num_t;
 
-typedef uint8_t mp_pci_fn_t;
-typedef uint8_t mp_pci_bus_t;
-typedef uint8_t mp_pci_device_t;
+typedef uint8_t cb_pci_fn_t;
+typedef uint8_t cb_pci_bus_t;
+typedef uint8_t cb_pci_device_t;
 
 /// @brief hardware tree header
 /// used by guest to resolve hardware peripherals.
-struct hw_mp_pci_tree
+struct hw_cb_pci_tree
 {
-	mp_pci_num_t d_magic;
-	mp_pci_num_t d_version;
-	mp_pci_num_t d_off_props;
-	mp_pci_num_t d_off_struct;
-	mp_pci_num_t d_sz_props;
-	mp_pci_num_t d_sz_struct;
+	cb_pci_num_t d_magic;
+	cb_pci_num_t d_version;
+	cb_pci_num_t d_off_props;
+	cb_pci_num_t d_off_struct;
+	cb_pci_num_t d_sz_props;
+	cb_pci_num_t d_sz_struct;
 
-	mp_pci_num_t d_first_node;
-	mp_pci_num_t d_next_sibling;
+	cb_pci_num_t d_first_node;
+	cb_pci_num_t d_next_sibling;
 
-	mp_pci_char_t d_name[SYS_PCI_NAME_LEN];
+	cb_pci_char_t d_name[SYS_PCI_NAME_LEN];
 };
 
 /// @brief Init PCI tree.
 /// @param void
 /// @return if it's successful or not.
-boolean mp_pci_init_tree(void);
+boolean cb_pci_init_tree(void);
 
 /// @brief Adds a new tree into the internal data structure.
 /// @param name device name
 /// @param struct_ptr device structure
 /// @param struct_sz the structure size of the device.
 /// @return if it was successful or not.
-boolean mp_pci_append_tree(const caddr_t name, mp_pci_num_t struct_ptr, mp_pci_num_t struct_sz);
+boolean cb_pci_append_tree(const caddr_t name, cb_pci_num_t struct_ptr, cb_pci_num_t struct_sz);

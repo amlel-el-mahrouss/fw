@@ -78,7 +78,7 @@ typedef ptrtype_t		 size_t;
 #define SYS_UART_BASE		 0x10000000
 #define SYS_FLASH_BASE_ADDR	 0x08000000
 
-#define mp_sync_synchronize() __sync_synchronize()
+#define cb_sync_synchronize() __sync_synchronize()
 #elif defined(__COMPILE_POWERPC__)
 #define SYS_UART_BASE		 0x10000000
 #define SYS_BOOT_ADDR		 0x1030000
@@ -86,7 +86,7 @@ typedef ptrtype_t		 size_t;
 #define SYS_FRAMEBUFFER_ADDR 0x40000000L
 #define SYS_FLASH_BASE_ADDR	 0x08000000
 
-#define mp_sync_synchronize() __sync_synchronize()
+#define cb_sync_synchronize() __sync_synchronize()
 #elif defined(__COMPILE_ARM64__)
 
 #define SYS_UART_BASE		 0x09000000
@@ -97,9 +97,10 @@ typedef ptrtype_t		 size_t;
 
 static inline void __sync_synchronize(void)
 {
+	cb_put_string("CB: warning: __sync_synchronize is not implemented!\r\n");
 }
 
-#define mp_sync_synchronize() __sync_synchronize()
+#define cb_sync_synchronize() __sync_synchronize()
 #endif // ifndef __COMPILE_POWERPC__
 
 #define SYS_BAUDRATE_TABLE                                            \
@@ -115,16 +116,16 @@ static inline void __sync_synchronize(void)
 #define SYS_BOOT_VER 0x101
 
 #define SYS_BOOT_CALL(struct, offset)                      \
-	mp_proc_t proc_##offset = (mp_proc_t)(struct->offset); \
+	cb_proc_t proc_##offset = (cb_proc_t)(struct->offset); \
 	proc_##offset();
 
-/// @brief float type.
+/// @brief floating point representation (IEE 7554) in a C structure
 typedef union {
 	struct
 	{
-		char  sign;
-		int	  mantissa;
-		short exponent;
+		char	sign;
+		int32_t mantissa;
+		int16_t exponent;
 	};
 
 	float f;
@@ -135,36 +136,36 @@ typedef uint32_t utf_char_t;
 
 /// @brief panic the entire system.
 /// @param reason why text.
-void mp_panic(const char* reason);
+void cb_panic(const char* reason);
 
 /// @brief update the power status of the machine.
-void mp_update_power_status(boolean restart);
+void cb_update_power_status(boolean restart);
 
 /// @brief puts a string in serial
 /// @param text
 /// @return
-size_t mp_put_string(const char* text);
+size_t cb_put_string(const char* text);
 
 /// @brief gets a char from serial
 /// @param
 /// @return
-utf_char_t mp_get_char(void);
+utf_char_t cb_get_char(void);
 
 /// @brief puts a char in serial
 /// @param ch
-void mp_put_char(utf_char_t ch);
+void cb_put_char(utf_char_t ch);
 
 /// @brief Hangs the firmware.
 /// @param void no args.
-void mp_restart_machine(void);
+void cb_restart_machine(void);
 
 /// @brief Flushs the TLB.
 /// @param void no args.
-void mp_flush_tlb(void);
+void cb_flush_tlb(void);
 
 /// @brief Print current kernel name.
 /// @param
-void mp_print_name(void);
+void cb_print_name(void);
 
 /// @brief String length getter
 /// @param str the string.
@@ -177,14 +178,14 @@ size_t strlen(caddr_t str);
 /// @return
 size_t strcmp(caddr_t src, caddr_t cmp);
 
-typedef void (*mp_proc_t)();
+typedef void (*cb_proc_t)();
 
 /// \brief ASCII character.
 typedef char ascii_char_t;
 
 /// @brief Linear Executable Header
 /// @author Amlal EL Mahrouss (Amlal EL Mahrouss)
-struct __attribute__((aligned(4))) mp_boot_header
+struct __attribute__((aligned(4))) cb_boot_header
 {
 	const ascii_char_t h_mag[2];		// magic number
 	const ascii_char_t h_name[10];		// operating system name

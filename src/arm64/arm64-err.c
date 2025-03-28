@@ -10,11 +10,11 @@
 
 /// @brief Goes into a panic state.
 /// @param reason why?
-void mp_panic(const char* reason)
+void cb_panic(const char* reason)
 {
-	mp_put_string("Error: ");
-	mp_put_string(reason);
-	mp_put_char('\n');
+	cb_put_string("Error: ");
+	cb_put_string(reason);
+	cb_put_char('\n');
 
 	while (yes)
 	{

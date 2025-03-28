@@ -22,7 +22,7 @@ struct fdt_err
 		.e_str = #VAL, \
 	}
 
-static struct fdt_err mp_fdtErrTbl[] = {
+static struct fdt_err cb_fdtErrTbl[] = {
 	fdt_error(FDT_ERR_NOTFOUND),
 	fdt_error(FDT_ERR_EXISTS),
 	fdt_error(FDT_ERR_NOSPACE),
@@ -46,7 +46,7 @@ static struct fdt_err mp_fdtErrTbl[] = {
 	fdt_error(FDT_ERR_ALIGNMENT),
 };
 
-#define fdt_error_length() mpux_array_size(mp_fdtErrTbl)
+#define fdt_error_length() mpux_array_size(cb_fdtErrTbl)
 
 /// @brief Returns the error value as a string.
 /// @param errval
@@ -63,7 +63,7 @@ const char* fdt_strerror(int32_t errval)
 	}
 	else if (-errval < fdt_error_length())
 	{
-		const char* serr = mp_fdtErrTbl[errval].e_str;
+		const char* serr = cb_fdtErrTbl[errval].e_str;
 
 		if (serr != null)
 		{

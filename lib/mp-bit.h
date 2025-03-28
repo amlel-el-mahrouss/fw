@@ -10,10 +10,10 @@
 /// Name: CoreBoot Bits API.
 /// Purpose: Bit manip helpers.
 
-#define mp_set_bit(X, O)   X = (1 << O) | X
-#define mp_clear_bit(X, O) X = ~(1 << O) & X
-#define mp_toogle(X, O)	   X = (1 << O) ^ X
-#define mp_lsb(X)		   X = X & -X
-#define mp_msb(X)		   X = -(mp_lsb(X)) & X
+#define cb_set_bit(X, O)   X = (1 << O) | X
+#define cb_clear_bit(X, O) X = ~(1 << O) & X
+#define cb_toogle(X, O)	   X = (1 << O) ^ X
+#define cb_lsb(X)		   X = X & -X
+#define cb_msb(X)		   X = -(cb_lsb(X)) & X
 
 #endif // ifndef __BITMANIP_H__

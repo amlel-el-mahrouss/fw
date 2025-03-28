@@ -6,25 +6,25 @@
 
 /**
  * @file coreboot-ahci-driver.cc
- * @author Amlal EL Mahrouss (amlal@el-mahrouss-logic.com)
- * @brief PowerPC Disk support, via AHCI.
+ * @author Amlal EL Mahrouss (amlal@nekernel.org)
+ * @brief SATA Disk support, via AHCI.
  * @version 0.2
  * @date 2024-01-16
  *
- * @copyright Copyright (c) 2024, Amlal EL Mahrouss.
+ * @copyright Copyright (c) 2024-2025, Amlal EL Mahrouss.
  *
  */
 
 #include <lib/pci-tree.h>
 #include <lib/boot.h>
 
-#define SYS_AHCI_DRIVER_NAME ("@ahci")
+#define SYS_AHCI_DRIVER_NAME ("@sata")
 
 /// BUGS: 0
 /// @brief AHCI support for PowerPC.
 
 /// @brief AHCI HBA port.
-typedef struct hba_port
+typedef struct cb_hba_port
 {
 	uint32_t clb;			// 0x00, command list base address, 1K-byte aligned
 	uint32_t clbu;			// 0x04, command list base address upper 32 bits
@@ -45,12 +45,12 @@ typedef struct hba_port
 	uint32_t fbs;			// 0x40, FIS-based switch control
 	uint32_t reserved1[11]; // 0x44 ~ 0x6F, Reserved
 	uint32_t vendor[4];		// 0x70 ~ 0x7F, vendor specific
-} hba_port_t;
+} cb_hba_port_t;
 
 /// @brief Check if port is active.
 /// @param port host bus address port.
 /// @return
-static boolean hba_port_active(volatile hba_port_t* port)
+static boolean cb_hba_port_active(volatile cb_hba_port_t* port)
 {
 	if (!port)
 		return false;
@@ -61,7 +61,7 @@ static boolean hba_port_active(volatile hba_port_t* port)
 /// @brief Start HBA command.
 /// @param port host bus address port.
 /// @return
-static boolean hba_start_cmd(volatile hba_port_t* port)
+static boolean cb_hba_start_cmd(volatile cb_hba_port_t* port)
 {
 	if (!port)
 		return false;
@@ -85,7 +85,7 @@ static boolean hba_start_cmd(volatile hba_port_t* port)
 /// @brief Stop HBA command.
 /// @param port host bus address port.
 /// @return
-static boolean hba_stop_cmd(volatile hba_port_t* port)
+static boolean cb_hba_stop_cmd(volatile cb_hba_port_t* port)
 {
 	if (!port)
 		return false;

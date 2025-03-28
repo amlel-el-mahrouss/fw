@@ -22,9 +22,9 @@ typedef struct NETBOOT_INET_HEADER
 	char m_nb4; /// magic char 4 'B'
 
 	char	m_patch_name[255]; /// example: ColdChoco
-	int32_t m_length;		   /// the patch length.
-	char	m_target[255];	   /// the target file.
-	uint8_t m_implies_rom;		   /// does it imply an EEPROM reprogram?
-	uint8_t m_preflight;		/// Do we just check if this endpoint exists/is valid?
+	int32_t m_length;		   /// The patch's length.
+	char	m_target[255];	   /// The target file.
+	uint8_t m_implies_rom;	   /// does it imply an EEPROM program?
+	uint8_t m_preflight;	   /// Do we just check if this endpoint exists/is valid?
 	uint8_t m_blob[];
 } NETBOOT_INET_HEADER;

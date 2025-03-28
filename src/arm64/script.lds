@@ -1,4 +1,4 @@
-ENTRY(mp_reset_vector)
+ENTRY(cb_reset_vector)
 SECTIONS
 {
   . = 0x40100000;
@@ -8,7 +8,7 @@ SECTIONS
   .bss : { *(.bss COMMON) }
   . = ALIGN(8);
   . = . + 0x1000; /* 4kB of stack memory */
-  __mp_stack_end = .;
+  __cb_stack_end = .;
 
-  PROVIDE(mp_memory_end = .);
+  PROVIDE(cb_memory_end = .);
 }

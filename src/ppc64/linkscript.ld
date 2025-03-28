@@ -1,4 +1,4 @@
-ENTRY(mp_reset_vector)
+ENTRY(cb_reset_vector)
 SECTIONS
 {
   . = 0xf00000;
@@ -11,5 +11,5 @@ SECTIONS
  . = . + 0x1000; /* 4kB of stack memory */
  stack_top = .;
 
- PROVIDE(mp_memory_end = .);
+ PROVIDE(cb_memory_end = .);
 }
