@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-    Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
+	Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
 
 ------------------------------------------- */
 
@@ -77,9 +77,9 @@ void cb_start_exec(void)
 		(volatile struct cb_boot_header*)(SYS_FLASH_BASE_ADDR);
 
 	/**
-      boot if:
-          - ident matches.
-          - version matches.
+	  boot if:
+		  - ident matches.
+		  - version matches.
   */
 
 	if (boot_hdr->h_mag[0] == SYS_BOOT_MAG_0 &&

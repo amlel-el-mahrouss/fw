@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-    Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
+	Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
 
 ------------------------------------------- */
 
@@ -51,7 +51,7 @@ struct fdt_header
 
 	/* version 2 fields below */
 	fdt32_t boot_cpuid_phys; /* Which physical CPU id we're
-					    booting on */
+						booting on */
 	/* version 3 fields below */
 	fdt32_t size_dt_strings; /* size of the strings block */
 
@@ -88,7 +88,7 @@ static inline voidptr_t fdt_offset_ptr_w(const voidptr_t fdt, int32_t offset, ui
 
 /*
  *  External helpers to access words from a device tree blob.
-*/
+ */
 
 static inline uint16_t fdt16_ld(const fdt16_t* p)
 {

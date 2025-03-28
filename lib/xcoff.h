@@ -1,13 +1,13 @@
 /* -------------------------------------------
 
-    Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
+	Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
 
-    File: xcoff.h
-    Purpose: XCOFF for CoreBoot.
+	File: xcoff.h
+	Purpose: XCOFF for CoreBoot.
 
-    Revision History:
+	Revision History:
 
-    04/07/24: Added file (amlel)
+	04/07/24: Added file (amlel)
 
 ------------------------------------------- */
 

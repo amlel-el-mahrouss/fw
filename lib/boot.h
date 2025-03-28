@@ -61,9 +61,9 @@ typedef ptrtype_t		 size_t;
 #define yes __yes
 
 #ifndef __cplusplus
-#define bool boolean
+#define bool  boolean
 #define false no
-#define true yes
+#define true  yes
 #endif //!_cplusplus
 
 #define SYS_RESTART	 0
@@ -97,7 +97,7 @@ typedef ptrtype_t		 size_t;
 
 static inline void __sync_synchronize(void)
 {
-	cb_put_string("CB: warning: __sync_synchronize is not implemented!\r\n");
+	/// leave it as is.
 }
 
 #define cb_sync_synchronize() __sync_synchronize()
