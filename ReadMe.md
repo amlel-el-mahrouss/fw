@@ -1,5 +1,11 @@
 # CoreBoot
 
+![CI](https://github.com/amlel-el-mahrouss/fw/actions/workflows/arm64.yml/badge.svg)
+[![License: GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
+[![QEMU Tested](https://img.shields.io/badge/QEMU-Tested-success)](#)
+
+## Notice for documentation:
+
 Build the documentation using Doxygen's `doxygen` CLI tool.
 
 ## Requirements:
