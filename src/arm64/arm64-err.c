@@ -12,7 +12,7 @@
 /// @param reason why?
 void cb_panic(const char* reason)
 {
-	cb_put_string("Error: ");
+	cb_put_string("panic: ");
 	cb_put_string(reason);
 	cb_put_char('\n');
 

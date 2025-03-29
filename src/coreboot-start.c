@@ -74,7 +74,7 @@ void cb_start_exec(void)
 	/// @brief Boots here if LX header matches what we except.
 
 	volatile struct cb_boot_header* boot_hdr =
-		(volatile struct cb_boot_header*)(SYS_FLASH_BASE_ADDR);
+		(volatile struct cb_boot_header*)(CB_FLASH_BASE_ADDR);
 
 	/**
 	  boot if:
@@ -82,10 +82,10 @@ void cb_start_exec(void)
 		  - version matches.
   */
 
-	if (boot_hdr->h_mag[0] == SYS_BOOT_MAG_0 &&
-		boot_hdr->h_mag[1] == SYS_BOOT_MAG_1)
+	if (boot_hdr->h_mag[0] == CB_BOOT_MAG_0 &&
+		boot_hdr->h_mag[1] == CB_BOOT_MAG_1)
 	{
-		if (boot_hdr->h_revision != SYS_BOOT_VER)
+		if (boot_hdr->h_revision != CB_BOOT_VER)
 		{
 			if (hart == 1)
 			{

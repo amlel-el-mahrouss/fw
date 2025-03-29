@@ -13,7 +13,7 @@
 
 /* this file handles the UART */
 
-static uint32_t* cb_uart_ptr = (uint32_t*)SYS_UART_BASE;
+static uint32_t* cb_uart_ptr = (uint32_t*)CB_UART_BASE;
 
 // we need that one, to avoid sending mutliple chars to UART.
 static boolean cb_locked_put_char = no;

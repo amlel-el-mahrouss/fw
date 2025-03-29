@@ -18,7 +18,7 @@
 #include <lib/pci-tree.h>
 #include <lib/boot.h>
 
-#define SYS_AHCI_DRIVER_NAME ("@sata")
+#define CB_AHCI_DRIVER_NAME ("@sata")
 
 /// BUGS: 0
 /// @brief AHCI support for PowerPC.
@@ -49,7 +49,7 @@ typedef struct cb_hba_port
 
 /// @brief Check if port is active.
 /// @param port host bus address port.
-/// @return
+/// @return whether sact is active or not.
 static boolean cb_hba_port_active(volatile cb_hba_port_t* port)
 {
 	if (!port)
@@ -58,9 +58,9 @@ static boolean cb_hba_port_active(volatile cb_hba_port_t* port)
 	return port->sact;
 }
 
-/// @brief Start HBA command.
+/// @brief Start HBA command processor.
 /// @param port host bus address port.
-/// @return
+/// @return whether it was successful or not.
 static boolean cb_hba_start_cmd(volatile cb_hba_port_t* port)
 {
 	if (!port)
@@ -82,9 +82,9 @@ static boolean cb_hba_start_cmd(volatile cb_hba_port_t* port)
 	return true;
 }
 
-/// @brief Stop HBA command.
+/// @brief Stop HBA command from processing.
 /// @param port host bus address port.
-/// @return
+/// @return whether it was successful or not.
 static boolean cb_hba_stop_cmd(volatile cb_hba_port_t* port)
 {
 	if (!port)
@@ -93,7 +93,7 @@ static boolean cb_hba_stop_cmd(volatile cb_hba_port_t* port)
 	port->cmd &= ~0x0001;
 	port->cmd &= ~0x0010;
 
-	while (1)
+	while (yes)
 	{
 		if ((port->cmd & 0x8000))
 			continue;

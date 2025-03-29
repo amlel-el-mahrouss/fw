@@ -81,10 +81,10 @@ cb_start_context:
 	add ra, zero, a1
 	mret
 
-.equ SYS_BOOT_ADDR, 0x80020000
+.equ CB_BOOT_ADDR, 0x80020000
 
 cb_start_rom:
-	li x5, SYS_BOOT_ADDR
+	li x5, CB_BOOT_ADDR
 	mv ra, zero
 	add ra, zero, t0
 	mret

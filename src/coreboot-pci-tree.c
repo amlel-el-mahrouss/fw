@@ -21,7 +21,7 @@
 /// BUGS: 0
 
 /// Standard Root table (Mahrouss Table)
-#define SYS_PCI_ROOT_NAME "/pci-tree/@/"
+#define CB_PCI_ROOT_NAME "/pci-tree/@/"
 
 static struct hw_cb_pci_tree* cb_base_tree	 = nil;
 static struct hw_cb_pci_tree* cb_latest_tree = nil;
@@ -32,27 +32,27 @@ static struct hw_cb_pci_tree* cb_last_tree	 = nil;
 /// Otherwise true.
 boolean cb_pci_init_tree(void)
 {
-	cb_base_tree = (struct hw_cb_pci_tree*)(SYS_PCI_TREE_BASE);
+	cb_base_tree = (struct hw_cb_pci_tree*)(CB_PCI_TREE_BASE);
 
 	// huh? anyway let's ignore it then.
-	if (cb_base_tree->d_magic != SYS_PCI_DEV_MAGIC)
+	if (cb_base_tree->d_magic != CB_PCI_DEV_MAGIC)
 	{
-		cb_base_tree->d_magic = SYS_PCI_DEV_MAGIC;
+		cb_base_tree->d_magic = CB_PCI_DEV_MAGIC;
 
-		memncpy(cb_base_tree->d_name, SYS_PCI_ROOT_NAME, strlen(SYS_PCI_ROOT_NAME));
+		memncpy(cb_base_tree->d_name, CB_PCI_ROOT_NAME, strlen(CB_PCI_ROOT_NAME));
 
 		cb_base_tree->d_next_sibling = 0;
 		cb_base_tree->d_off_props	 = 0;
 		cb_base_tree->d_sz_struct	 = 0;
 		cb_base_tree->d_sz_props	 = 0;
 		cb_base_tree->d_off_struct	 = 0;
-		cb_base_tree->d_version		 = SYS_PCI_VERSION;
+		cb_base_tree->d_version		 = CB_PCI_VERSION;
 
 		cb_base_tree->d_next_sibling =
 			(cb_pci_num_t)(cb_base_tree + sizeof(struct hw_cb_pci_tree));
 		cb_base_tree->d_first_node = (cb_pci_num_t)cb_base_tree;
 
-		cb_put_string(">> Append root device: " SYS_PCI_ROOT_NAME "\r\n");
+		cb_put_string(">> Append root device: " CB_PCI_ROOT_NAME "\r\n");
 	}
 
 	cb_latest_tree = cb_base_tree;
@@ -71,7 +71,7 @@ boolean cb_pci_append_tree(const caddr_t name, cb_pci_num_t struct_ptr, cb_pci_n
 
 	struct hw_cb_pci_tree* cb_pci_tree = (struct hw_cb_pci_tree*)(cb_latest_tree);
 
-	while (cb_pci_tree->d_magic == SYS_PCI_DEV_MAGIC)
+	while (cb_pci_tree->d_magic == CB_PCI_DEV_MAGIC)
 	{
 		if (strcmp(cb_pci_tree->d_name, name) == 0)
 			return no;
@@ -81,7 +81,7 @@ boolean cb_pci_append_tree(const caddr_t name, cb_pci_num_t struct_ptr, cb_pci_n
 									 sizeof(struct hw_cb_pci_tree));
 	}
 
-	cb_pci_tree->d_magic = SYS_PCI_DEV_MAGIC;
+	cb_pci_tree->d_magic = CB_PCI_DEV_MAGIC;
 
 	memncpy(cb_pci_tree->d_name, name, strlen(name));
 
@@ -89,7 +89,7 @@ boolean cb_pci_append_tree(const caddr_t name, cb_pci_num_t struct_ptr, cb_pci_n
 	cb_pci_tree->d_sz_struct  = struct_sz;
 	cb_pci_tree->d_off_props  = 0;
 	cb_pci_tree->d_sz_props	  = 0;
-	cb_pci_tree->d_version	  = SYS_PCI_VERSION;
+	cb_pci_tree->d_version	  = CB_PCI_VERSION;
 
 	cb_pci_tree->d_next_sibling =
 		(cb_pci_num_t)(cb_pci_tree + sizeof(struct hw_cb_pci_tree));

@@ -11,11 +11,11 @@
 
 /* this file handles the UART */
 
-static uint8_t* cb_uart_ptr = (uint8_t*)SYS_UART_BASE;
+static uint8_t* cb_uart_ptr = (uint8_t*)CB_UART_BASE;
 
 utf_char_t cb_get_char(void)
 {
-	uintptr_t ptr = SYS_UART_BASE;
+	uintptr_t ptr = CB_UART_BASE;
 	while (!(*(((volatile uint8_t*)ptr) + 0x05) & 0x01))
 		;
 

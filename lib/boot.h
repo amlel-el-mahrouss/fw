@@ -61,39 +61,39 @@ typedef ptrtype_t		 size_t;
 #define yes __yes
 
 #ifndef __cplusplus
-#define bool  boolean
+#define bool boolean
 #define false no
-#define true  yes
+#define true yes
 #endif //!_cplusplus
 
-#define SYS_RESTART	 0
-#define SYS_SHUTDOWN 1
+#define CB_RESTART	0
+#define CB_SHUTDOWN 1
 
 #define __COPYRIGHT(s) /* unused */
 
 #ifdef __COMPILE_RISCV__
-#define SYS_BOOT_ADDR		 (0x80020000)
-#define SYS_BOOT_ADDR_STR	 "0x80020000"
-#define SYS_FRAMEBUFFER_ADDR 0x40000000L
-#define SYS_UART_BASE		 0x10000000
-#define SYS_FLASH_BASE_ADDR	 0x08000000
+#define CB_BOOT_ADDR		(0x80020000)
+#define CB_BOOT_ADDR_STR	"0x80020000"
+#define CB_FRAMEBUFFER_ADDR 0x40000000L
+#define CB_UART_BASE		0x10000000
+#define CB_FLASH_BASE_ADDR	0x08000000
 
 #define cb_sync_synchronize() __sync_synchronize()
 #elif defined(__COMPILE_POWERPC__)
-#define SYS_UART_BASE		 0x10000000
-#define SYS_BOOT_ADDR		 0x1030000
-#define SYS_BOOT_ADDR_STR	 "0x1030000"
-#define SYS_FRAMEBUFFER_ADDR 0x40000000L
-#define SYS_FLASH_BASE_ADDR	 0x08000000
+#define CB_UART_BASE		0x10000000
+#define CB_BOOT_ADDR		0x1030000
+#define CB_BOOT_ADDR_STR	"0x1030000"
+#define CB_FRAMEBUFFER_ADDR 0x40000000L
+#define CB_FLASH_BASE_ADDR	0x08000000
 
 #define cb_sync_synchronize() __sync_synchronize()
 #elif defined(__COMPILE_ARM64__)
 
-#define SYS_UART_BASE		 0x09000000
-#define SYS_BOOT_ADDR		 0x1030000
-#define SYS_BOOT_ADDR_STR	 "0x1030000"
-#define SYS_FRAMEBUFFER_ADDR 0x40000000L
-#define SYS_FLASH_BASE_ADDR	 0x08000000
+#define CB_UART_BASE		0x09000000
+#define CB_BOOT_ADDR		0x1030000
+#define CB_BOOT_ADDR_STR	"0x1030000"
+#define CB_FRAMEBUFFER_ADDR 0x40000000L
+#define CB_FLASH_BASE_ADDR	0x08000000
 
 static inline void __sync_synchronize(void)
 {
@@ -103,20 +103,20 @@ static inline void __sync_synchronize(void)
 #define cb_sync_synchronize() __sync_synchronize()
 #endif // ifndef __COMPILE_POWERPC__
 
-#define SYS_BAUDRATE_TABLE                                            \
+#define CB_BAUDRATE_TABLE                                             \
 	{                                                                 \
 		300, 600, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200 \
 	}
 
-#define SYS_STRING(s) #s
+#define CB_STRING(s) #s
 
-#define SYS_BOOT_MAG_0 'C'
-#define SYS_BOOT_MAG_1 'B'
+#define CB_BOOT_MAG_0 'C'
+#define CB_BOOT_MAG_1 'B'
 
-#define SYS_BOOT_VER 0x101
+#define CB_BOOT_VER 0x101
 
-#define SYS_BOOT_CALL(struct, offset)                      \
-	cb_proc_t proc_##offset = (cb_proc_t)(struct->offset); \
+#define CB_BOOT_CALL(struct, offset)                                         \
+	volatile cb_proc_t proc_##offset = (volatile cb_proc_t)(struct->offset); \
 	proc_##offset();
 
 /// @brief floating point representation (IEE 7554) in a C structure
