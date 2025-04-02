@@ -28,7 +28,7 @@ extern void cb_start_rom(void);
 extern int cb_boot_processor_ready;
 
 /// @brief hardware thread counter (rv64 only)
-#ifdef __riscv64__
+#ifdef __COMPILE_RISCV__
 uint64_t __cb_hart_counter = 0UL;
 #endif
 
@@ -36,7 +36,7 @@ uint64_t __cb_hart_counter = 0UL;
 /// @param
 void cb_start_exec(void)
 {
-#ifndef __riscv64__
+#ifndef __COMPILE_RISCV__
 	static uint64_t __cb_hart_counter = 0UL;
 #endif
 
