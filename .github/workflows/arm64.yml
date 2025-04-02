@@ -1,4 +1,4 @@
-name: FW CI
+name: FW CI (ARM64)
 
 on:
   push:
