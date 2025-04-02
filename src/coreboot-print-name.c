@@ -11,7 +11,7 @@
 void cb_print_name(void)
 {
 #ifdef __COMPILE_POWERPC__
-	cb_put_string(">> CoreBoot for POWER.\r\n");
+	cb_put_string(">> CoreBoot for POWERPC.\r\n");
 #endif // __COMPILE_POWERPC__
 
 #ifdef __COMPILE_ARM64__

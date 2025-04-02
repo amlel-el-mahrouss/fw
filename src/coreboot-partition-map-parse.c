@@ -16,7 +16,7 @@ bool cb_parse_partition_block_data_at(voidptr_t blob, size_t blob_sz, size_t ind
 		(sizeof(part_block_t) * index) > blob_sz)
 		return false;
 
-	part_block_t* block = (part_block_t*)(block + (sizeof(part_block_t) * index));
+	part_block_t* block = (part_block_t*)(blob + (sizeof(part_block_t) * index));
 
 	if (block->version != EPM_REVISION ||
 		block->num_blocks < 1 ||
@@ -42,7 +42,9 @@ part_block_t* cb_parse_partition_block_at(voidptr_t blob, size_t blob_sz, size_t
 		(sizeof(part_block_t) * index) > blob_sz)
 		return nil;
 
-	part_block_t* block = (part_block_t*)(block + (sizeof(part_block_t) * index));
+	part_block_t* block = (part_block_t*)(blob + (sizeof(part_block_t) * index));
+
+	cb_put_string(block->magic);
 
 	if (block->version != EPM_REVISION ||
 		block->num_blocks < 1 ||
