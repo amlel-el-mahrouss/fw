@@ -3,7 +3,7 @@
  #
  #	CoreBoot
  # 	Date Added: 08/11/2023
- # 	Copyright 2024, ZKA Technologies, all rights reserved.
+ # 	Copyright 2024, Amlal El Mahrouss, all rights reserved.
  #
  # 	========================================================
  #
