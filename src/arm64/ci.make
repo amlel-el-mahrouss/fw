@@ -8,8 +8,8 @@
  # 	========================================================
  #
 
-CC=aarch64-elf-gcc
-AS=aarch64-elf-as
+CC=aarch64-linux-gnu-gcc
+AS=aarch64-linux-gnu-as
 
 COREBOOT=core-boot.elf
 FIRMWARE=boot.rom
@@ -22,10 +22,10 @@ C_SRC=$(wildcard *.c) $(wildcard ../*.c) -c
 
 AS_FLAGS= -c -I../../
 
-LD=aarch64-elf-ld
+LD=aarch64-linux-gnu-ld
 OBJ=*.o
 FLAGS_LD= --script=script.lds -o core-boot.elf -nostdlib
-OBJCOPY=aarch64-elf-objcopy
+OBJCOPY=aarch64-linux-gnu-objcopy
 
 EMU=qemu-system-aarch64
 EMU_FLAGS=-M virt -cpu cortex-a57 -bios $(FIRMWARE) -m 256M -d int -smp 2

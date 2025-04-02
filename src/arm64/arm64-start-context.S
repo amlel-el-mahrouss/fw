@@ -11,7 +11,6 @@
 
 cb_start_context:
     bl cb_start_context
-    ldr pc, [lr]
 
 cb_boot_processor_ready:
-    ldr pc, [lr]
+    bl cb_boot_processor_ready

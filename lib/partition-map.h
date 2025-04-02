@@ -35,9 +35,8 @@
 #define EPM_MAGIC "EPMMS" /* mass storage */
 #endif
 
-#define EPM_MAX_BLKS 128 /* 1 on UEFI EPM. */
+#define EPM_MAX_BLKS (128) /* 1 on UEFI EPM. */
 
-#define EPM_BOOT_BLK_SZ sizeof(struct boot_block)
 #define EPM_PART_BLK_SZ sizeof(struct part_block)
 
 /// @brief Start of EPM headers.

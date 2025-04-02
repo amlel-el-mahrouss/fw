@@ -1,4 +1,4 @@
-name: FW CI
+name: FW CI (ARM64)
 
 on:
   push:
@@ -14,6 +14,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Install Packages
-      run: sudo apt update && sudo apt install gcc-arm-none-eabi
+      run: sudo apt update && sudo apt install gcc-aarch64-linux-gnu
     - name: Build FW (ARM64)
-      run: cd src && cd arm64 && make all
+      run: cd src && cd arm64 && make -f ci.make all
