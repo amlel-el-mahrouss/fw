@@ -27,13 +27,18 @@ extern void cb_start_rom(void);
 
 extern int cb_boot_processor_ready;
 
-/// @brief hardware thread counter.
+/// @brief hardware thread counter (rv64 only)
+#ifdef __riscv64__
+uint64_t __cb_hart_counter = 0UL;
+#endif
 
 /// @brief Start executing the firmware.
 /// @param
 void cb_start_exec(void)
 {
+#ifndef __riscv64__
 	static uint64_t __cb_hart_counter = 0UL;
+#endif
 
 	++__cb_hart_counter;
 
