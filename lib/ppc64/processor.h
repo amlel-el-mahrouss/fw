@@ -1,8 +1,6 @@
 #ifndef __ASM_PPC_PROCESSOR_H
 #define __ASM_PPC_PROCESSOR_H
 
-/// ! @note The NeWS SoC is based on the e5500 core.
-
 /*
  * Default implementation of macro that returns current
  * instruction pointer ("program counter").
