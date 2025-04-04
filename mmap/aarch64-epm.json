@@ -1,0 +1,9 @@
+{
+  "machine": "EPM AARCH64",
+  "type": "Generic",
+  "vendor": "Amlal El Mahrouss",
+  "fb": "0x1000000",
+  "boot": "0x4000000",
+  "pci-tree": "0x8002000",
+  "eeprom": "0x0000000"
+}
